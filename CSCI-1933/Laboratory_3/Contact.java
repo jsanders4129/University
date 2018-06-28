@@ -4,6 +4,20 @@ public class Contact{
     private String address;
     private String comments;
 
+    public Contact(){
+        name = "N/A";
+        phone = 0;
+        address = "N/A";
+        comments = "N/A";
+    }
+
+    public Contact(String iName, long iPhone, String iAddress, String iComments){
+        name = iName;
+        phone = iPhone;
+        address = iAddress;
+        comments = iComments;
+    }
+
     public void setName(String input){
         name = input;
     }
@@ -14,7 +28,7 @@ public class Contact{
     public void setPhone(long input){
         phone = input;
     }
-    pubilc long getPhone(){
+    public long getPhone(){
         return phone;
     }
 
@@ -34,17 +48,19 @@ public class Contact{
 
     public String toString(){
         return
-        "Name: " + '\t' + '\t' + name + '\n'
+        "Name: " + '\t' + '\t' + name + System.lineSeparator()
         +
-        "Phone: " + '\t' + '\t' + phone + '\n'
+        "Phone: " + '\t' + '\t' + phone + System.lineSeparator()
         +
-        "Address: " + '\t' + address + '\n'
+        "Address: " + '\t' + address + System.lineSeparator()
         +
-        "Comments: " + '\t' + comments + '\n'
+        "Comments: " + '\t' + comments + System.lineSeparator()
+        +
+        System.lineSeparator()
         ;
     }
 
     public static void main(String[] args){
-        return 0;
+        System.out.println("");
     }
 }
