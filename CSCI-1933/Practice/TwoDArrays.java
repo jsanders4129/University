@@ -6,7 +6,7 @@ public class TwoDArrays{
     };
 
     public TwoDArrays(){
-
+is bull
     }
 
     public TwoDArrays(int[][] arrayInput){

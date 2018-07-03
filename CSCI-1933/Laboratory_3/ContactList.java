@@ -37,7 +37,7 @@ public class ContactList{
         }
     }
 
-    public Contact find(String name){
+    public Contact find(String name
         int length = contactList.length;
         int i = 0;
         int searchIndex = ptr + 1;
