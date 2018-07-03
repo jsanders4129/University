@@ -1,34 +1,41 @@
+//Austin Basala Basal006
+
 public class Random {
-  private int P1;
-  private int P2;
-  private int M;
-  private int rOld;
-  private int rNew;
-  public Random(int p1, int p2, int m) {
-    P1=p1;
-    P2=p2;
-    M=m;
-    rOld = 0;
-  }
-  public void setSeed(int seed) {
+    private int pOne;
+    private int pTwo;
+    private int maximum;
+    private int rOld;
+    private int rNew;
+    public Random(int p1, int p2, int m) {
+        pOne=p1;
+        pTwo=p2;
+        maximum=m;
+        rOld = 0;
+    }
+    public void setSeed(int seed) {
     rOld = seed;
   }
   public int getMaximum() {
-    return M;
+    return maximum;
   }
   public int random() {
-    rNew = ((P1*rOld)+P2)%M;
-    rOld = rNew;
+    rNew = (((pOne*rOld)+pTwo)%maximum);
+    this.setSeed(rNew);
+
     return rNew;
   }
   public int randomInteger(int lower, int upper) {
-    int randRange = random();
-    randRange *= (upper-lower)/M;
-    randRange += lower;
+    if (lower > upper){
+        int t = lower;
+        lower = upper;
+        upper = t;
+    }
+    int randRange = random() % (upper + lower);
     return randRange;
   }
   public boolean randomBoolean() {
     int randBool = random();
+    //System.out.println("hi"+randBool);
     if(randBool%2==0) {
       return true;
     }
@@ -38,23 +45,36 @@ public class Random {
 
   }
   public double randomDouble(double lower, double upper) {
-    double randDub = random();
-    randDub *= (upper-lower)/M;
-    randDub += lower;
+    double randDub = (random() / (upper + lower)) % (upper);
     return randDub;
   }
   public static void main(String []args) {
     Random randomVariable = new Random(7919,65537,102611);
-    Random randomVariable2 = new Random(12,4,6);
+    //System.out.println(randomVariable.random());
+    int i = 0;
+    while (i < 1000){
+        System.out.println(randomVariable.randomInteger(1, 5));
+        i++;
+    }
+    i = 0;
 
-    System.out.println(randomVariable.random());
-    System.out.println(randomVariable.random());
-    System.out.println(randomVariable.random());
+    while (i < 1000){
+        System.out.println(randomVariable.randomDouble(1, 5));
+        i++;
+    }
+    i = 0;
 
-    System.out.println(randomVariable2.random());
+    while (i < 1000){
+        System.out.println(randomVariable.randomBoolean());
+        i++;
+    }
+    i = 0;
 
-    System.out.println(randomVariable.randomInteger(1,4));
-    System.out.println(randomVariable2.randomInteger(1,4));
+
+    //System.out.println(randomVariable2.random());
+
+    //System.out.println(randomVariable.randomInteger(1,4));
+    //System.out.println(randomVariable2.randomInteger(1,4));
 
 
   }
